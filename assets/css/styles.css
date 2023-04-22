@@ -144,6 +144,10 @@
   .icon-success {
     color: rgb(29, 153, 255);
   }
+
+  #weather-box {
+    visibility: hidden;
+  }
   
   /* CARDS */
   .card {

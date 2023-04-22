@@ -27,6 +27,12 @@ function formSubmitHandler(event) {
 function cityLookup(city) {
   var cityName = city;
   var limit = 1;
+
+if (!searchHistory.includes(city)) {
+  searchHistory.unshift(city);
+  localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+}
+
   var apiUrl =
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
     cityName +
@@ -34,9 +40,6 @@ function cityLookup(city) {
     limit +
     "&appid=" +
     apiKey;
-
-  searchHistory.push(city);
-  localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
 
   console.log(apiUrl);
   fetch(apiUrl)
@@ -58,6 +61,7 @@ function cityLookup(city) {
       alert("Unable to connect to OpenWeatherMap: " + error);
     });
     displayHistory();
+    nameInputEl.value = "";
 }
 
 function displayHistory() {
@@ -84,8 +88,13 @@ function displayHistory() {
 function displayWeather(lat, lon) {
   var weatherContainerEl = document.querySelector("#weather-container");
   var citySearchEl = document.querySelector("#city-search-term");
+  const weatherBox = document.querySelector("#weather-box");
+
   weatherContainerEl.innerHTML = "";
   citySearchEl.innerHTML = "";
+
+  weatherBox.style.visibility = "visible";
+
 
   var lat = lat;
   var lon = lon;
@@ -123,9 +132,10 @@ function displayWeather(lat, lon) {
             cardDivBody.classList = "card-body";
             weatherIcon.classList = "card-img-top";
             
-            cardDiv.classList = "card";
-            cardDiv.setAttribute("style", "width: 18rem");
+            cardDiv.classList.add("card");
+          
             
+            // Weather Right Now
             const iconCode = allDays[0].weather[0].icon;
             const iconUrl = "http://openweathermap.org/img/wn/" + iconCode + ".png";
             weatherIcon.setAttribute("src", iconUrl);
@@ -134,9 +144,12 @@ function displayWeather(lat, lon) {
             weatherConditionsWind.textContent = "Wind: " + allDays[0].wind.speed + " MPH";;
             weatherConditionsHum.textContent = "Humidity: " + allDays[0].main.humidity + "%";
             citySearchEl.textContent = data.city.name;
-            forecastDate.textContent = allDays[0].dt_txt;
+            const forecastDateStr = allDays[0].dt_txt;
+            const dateObj = new Date(forecastDateStr);
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = new Intl.DateTimeFormat('en-US', options).format(dateObj);
 
-            https://openweathermap.org/img/wn/10d@2x.png
+            forecastDate.textContent = formattedDate;
 
             cardDivBody.appendChild(weatherConditionsTemp);
             cardDivBody.appendChild(weatherConditionsWind);
@@ -145,6 +158,12 @@ function displayWeather(lat, lon) {
             cardDiv.appendChild(weatherIcon);
             cardDiv.appendChild(cardDivBody);
             weatherContainerEl.appendChild(cardDiv);
+
+            // 5-Day Forecast
+
+            
+
+
             return;
           }
         );
