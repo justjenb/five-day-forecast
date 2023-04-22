@@ -83,7 +83,9 @@ function displayHistory() {
 
 function displayWeather(lat, lon) {
   var weatherContainerEl = document.querySelector("#weather-container");
+  var citySearchEl = document.querySelector("#city-search-term");
   weatherContainerEl.innerHTML = "";
+  citySearchEl.innerHTML = "";
 
   var lat = lat;
   var lon = lon;
@@ -99,24 +101,50 @@ function displayWeather(lat, lon) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-            const searchHistoryBox = document.querySelector("#search-history");
+            console.log(data);
 
             const allDays = data.list;
 
             const cardDiv = document.createElement("div");
-            const weatherIcon = document.createElement("p");
             const cardDivBody = document.createElement("div");
-            const forecastDate = document.createElement("h5");
-            const weatherConditions = document.createElement("p");
-            weatherConditions.classList = "card-text";
+
+            const forecastDate = document.createElement("h3");
+
+            const weatherIcon = document.createElement("img");
+            const weatherConditionsTemp = document.createElement("p");
+            const weatherConditionsWind = document.createElement("p");
+            const weatherConditionsHum = document.createElement("p");
+
+            weatherConditionsTemp.classList = "card-text";
+            weatherConditionsWind.classList = "card-text";
+            weatherConditionsHum.classList = "card-text";
+
             forecastDate.classList = "card-title";
             cardDivBody.classList = "card-body";
             weatherIcon.classList = "card-img-top";
+            
             cardDiv.classList = "card";
             cardDiv.setAttribute("style", "width: 18rem");
-            // weatherIcon.textContent = data.var;
-            console.log(allDays[0].main.temp);
-            weatherConditions.textContent = allDays[0].main.temp;
+            
+            const iconCode = allDays[0].weather[0].icon;
+            const iconUrl = "http://openweathermap.org/img/wn/" + iconCode + ".png";
+            weatherIcon.setAttribute("src", iconUrl);
+            
+            weatherConditionsTemp.textContent = "Temp: " + allDays[0].main.temp + "\xB0F";
+            weatherConditionsWind.textContent = "Wind: " + allDays[0].wind.speed + " MPH";;
+            weatherConditionsHum.textContent = "Humidity: " + allDays[0].main.humidity + "%";
+            citySearchEl.textContent = data.city.name;
+            forecastDate.textContent = allDays[0].dt_txt;
+
+            https://openweathermap.org/img/wn/10d@2x.png
+
+            cardDivBody.appendChild(weatherConditionsTemp);
+            cardDivBody.appendChild(weatherConditionsWind);
+            cardDivBody.appendChild(weatherConditionsHum);
+            cardDiv.appendChild(forecastDate);
+            cardDiv.appendChild(weatherIcon);
+            cardDiv.appendChild(cardDivBody);
+            weatherContainerEl.appendChild(cardDiv);
             return;
           }
         );
@@ -131,5 +159,3 @@ function displayWeather(lat, lon) {
 
 displayHistory();
 searchButton.addEventListener("submit", formSubmitHandler);
-
-
