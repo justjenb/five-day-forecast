@@ -148,6 +148,20 @@
   #weather-box {
     visibility: hidden;
   }
+
+  .five-day-card {
+    width: 100px;
+  }
+
+  #currentDay {
+    font-size: 3rem;
+    background-color: var(--primary);
+    color: var(--dark);
+    margin-left: 100px;
+    padding: 0 10px;
+    border-radius: var(--border-radius);
+    box-shadow: 6px 5px var(--light-dark);
+  }
   
   /* CARDS */
   .card {

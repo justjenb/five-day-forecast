@@ -10,3 +10,5 @@ https://getbootstrap.com/docs/4.0/components/card/
 https://www.w3schools.com/jsref/met_element_setattribute.asp
 https://www.rgraph.net/blog/2022/using-css-vs-javascript-for-external-link-icons.html
 https://www.tutorialspoint.com/how-to-clear-the-form-after-submitting-in-javascript-without-using-reset
+https://stackoverflow.com/questions/6603015/check-whether-a-string-matches-a-regex-in-js
+https://stackoverflow.com/questions/73723485/openweathermap-forecast-min-max-temperature-hole-day-forecast

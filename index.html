@@ -8,12 +8,14 @@
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   <link rel="stylesheet" href="./assets/css/styles.css" />
-  <title>Weather Dashboard</title>
+  <title>Weather Dashboard 
+  </title>
+
 </head>
 
 <body class="flex-column min-100-vh">
   <header class="hero">
-    <h1 class="app-title">Weather Dashboard</h1>
+    <h1 class="app-title">Weather Dashboard</h1><span id="currentDay"></span>
   </header>
 
 
@@ -23,8 +25,9 @@
       <div class="card">
         <h3 class="card-header text-uppercase">Search By City</h3>
         <form id="submit-form" class="card-body">
-          <input name="city-name" id="city-name" type="text" autofocus="true" class="form-input" placeholder="Boston" />
+          <input name="city-name" id="city-name" type="text" autofocus="true" class="form-input" placeholder="Boston, MA, US or London, GB" />
           <button type="submit" class="btn">Search</button>
+          <span>For best results search by city, state and country code, or city and country code.</span>
         </form>
       </div>
 
@@ -36,15 +39,21 @@
     </div>
 
     <div id="weather-box" class="col-12 col-md-8">
-      <h2 class="subtitle">Showing weather for: <span id="city-search-term"></span></h2>
-      <div id="weather-container" class="list-group">
+      <h2 class="subtitle">Today's weather for: <span id="city-search-term"></span></h2>
+      <div id="weather-container">
       </div>
       <h2 class="subtitle">5-Day Forecast: </h2>
-      <div id="forecast-container" class="list-group">
+      <div id="forecast-container">
       </div>
     </div>
   </main>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
   <script src="./assets/js/scripts.js"></script>
 </body>
 
