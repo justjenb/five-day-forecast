@@ -12,3 +12,6 @@ https://www.rgraph.net/blog/2022/using-css-vs-javascript-for-external-link-icons
 https://www.tutorialspoint.com/how-to-clear-the-form-after-submitting-in-javascript-without-using-reset
 https://stackoverflow.com/questions/6603015/check-whether-a-string-matches-a-regex-in-js
 https://stackoverflow.com/questions/73723485/openweathermap-forecast-min-max-temperature-hole-day-forecast
+https://stackoverflow.com/questions/46802448/how-do-i-group-items-in-an-array-by-date
+https://dyclassroom.com/javascript-code/create-an-array-of-dates-between-start-date-and-end-date-in-javascript
+https://forum.freecodecamp.org/t/slice-and-splice-and-foreach/210409
