@@ -45,6 +45,8 @@ function cityLookup(city) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
+          console.log(data);
+
           if (data.length === 0) {
             alert("Invalid city.");
             return;
@@ -109,6 +111,7 @@ function displayWeather(lat, lon) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
+          console.log(data);
           const minMaxTemps = getMinMaxTemp(data);
 
           // Today
