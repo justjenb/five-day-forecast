@@ -115,6 +115,7 @@ function displayWeather(lat, lon) {
           const minMaxTemps = getMinMaxTemp(data);
 
           // Today
+          
           const todayDate = data.list[0].dt_txt.split(" ")[0];
           const currentWeatherEl = createWeatherBox(
             data.list[0],
