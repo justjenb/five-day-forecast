@@ -100,7 +100,7 @@ function displayWeather(lat, lon) {
   var lat = lat;
   var lon = lon;
   var apiUrl =
-    "http://api.openweathermap.org/data/2.5/forecast?lat=" +
+    "https://api.openweathermap.org/data/2.5/forecast?lat=" +
     lat +
     "&lon=" +
     lon +
